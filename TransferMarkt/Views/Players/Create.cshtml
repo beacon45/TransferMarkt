@@ -1,0 +1,87 @@
+﻿@model TransferMarkt.Models.PlayersVM
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> userManager
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>ADD TO TRANSFERLIST</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Age" class="control-label"></label>
+                <input asp-for="Age" class="form-control" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Height" class="control-label"></label>
+                <input asp-for="Height" class="form-control" />
+                <span asp-validation-for="Height" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Country" class="control-label"></label>
+                <input asp-for="Country" class="form-control" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Position" class="control-label"></label>
+                <input asp-for="Position" class="form-control" />
+                <span asp-validation-for="Position" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="currentClub" class="control-label">Club</label>
+                <input asp-for="currentClub" class="form-control" />
+                <span asp-validation-for="currentClub" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="contractYear" class="control-label">Contract Expiring</label>
+                <input asp-for="contractYear" class="form-control" />
+                <span asp-validation-for="contractYear" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label">Market Value</label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Appearance" class="control-label"></label>
+                <input asp-for="Appearance" class="form-control" />
+                <span asp-validation-for="Appearance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CareerGoals" class="control-label"></label>
+                <input asp-for="CareerGoals" class="form-control" />
+                <span asp-validation-for="CareerGoals" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImagePath" class="control-label"></label>
+                <input asp-for="ImagePath" class="form-control" accept="image/*" style="width: 30%" />
+                <span asp-validation-for="ImagePath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="IdentityUserId" class="form-control" value="@userManager.GetUserId(User)" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
